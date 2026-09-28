@@ -1,7 +1,135 @@
 <!DOCTYPE html>
-<html>
-<body style="background:black;color:white">
-<h1>Ninja Tribes ObitoFR</h1>
-<p>Version 1.0</p>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ninja Tribes ObitoFR</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:white;
+}
+
+header{
+background:#1b1b1b;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.banner{
+margin:15px;
+padding:30px;
+border-radius:15px;
+background:#222;
+text-align:center;
+font-size:24px;
+}
+
+.menu{
+display:flex;
+justify-content:space-around;
+padding:15px;
+background:#1b1b1b;
+position:fixed;
+bottom:0;
+width:100%;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#ff6a00;
+color:white;
+font-weight:bold;
+}
+
+.card{
+background:#1f1f1f;
+margin:15px;
+padding:15px;
+border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div>👤 ObitoFR Lv.1</div>
+<div>XP 0/100</div>
+</header>
+
+<div class="banner">
+🌑 Bannière Obito Uchiha UR
+</div>
+
+<div class="card">
+<h3>Tickets</h3>
+<p id="tickets">100</p>
+
+<button onclick="summon1()">Invocation x1</button>
+<button onclick="summon10()">Invocation x10</button>
+
+<h3>Dernier personnage obtenu</h3>
+<p id="result">Aucun</p>
+</div>
+
+<div class="menu">
+<div>🏠 Home</div>
+<div>🎴 Summon</div>
+<div>📚 Collection</div>
+<div>⚔️ Combat</div>
+</div>
+
+<script>
+const characters = [
+"Obito Uchiha UR",
+"Naruto Kurama UR",
+"Sasuke Mangekyo UR",
+"Edo Itachi UR",
+"Edo Nagato UR",
+"Madara Uchiha UR"
+];
+
+let tickets = 100;
+
+function summon1(){
+if(tickets <= 0){
+alert("Plus de tickets");
+return;
+}
+
+tickets--;
+document.getElementById("tickets").innerText = tickets;
+
+const random =
+characters[Math.floor(Math.random()*characters.length)];
+
+document.getElementById("result").innerText = random;
+}
+
+function summon10(){
+for(let i=0;i<10;i++){
+if(tickets>0){
+tickets--;
+}
+}
+
+document.getElementById("tickets").innerText = tickets;
+
+const random =
+characters[Math.floor(Math.random()*characters.length)];
+
+document.getElementById("result").innerText =
+"Pack x10 → " + random;
+}
+</script>
+
 </body>
 </html>
